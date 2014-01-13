@@ -13,3 +13,5 @@ jQuery
 			$('.hero-container img').stretchyPants();
 
 As you resize the window the image will stay within the bounds of the container, two of the edges will be cropped out but the image will not be distorted.
+
+See demo.html for an example.
