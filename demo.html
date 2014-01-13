@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Just for Fun.</title>
+  <style>
+    .hero-container { width: 100%; height: 500px; margin: 40px auto;  }
+    h1 { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; text-align: center; font-weight: 200;}
+  </style>
+</head>
+<body>
+	<h1>Stretchy Pants</h1>
+	<div class="hero-container">
+		<img src="big_image.jpg" alt="image remains centered" />
+	</div> 
+	<h1>Resize Window to See the Magic.</h1>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="stretchy_pants.js"></script>
+  <script>
+  	$('.hero-container img').stretchyPants();
+  </script>
+</body>
+
+</html>
