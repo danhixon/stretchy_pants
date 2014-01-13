@@ -66,7 +66,7 @@ jQuery.fn.stretchyPants = function(options) {
 			})
 		}
 
-	}
+	}	
 
 	$(window).resize(function(){
 		stretchImage()
