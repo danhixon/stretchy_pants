@@ -36,10 +36,13 @@ jQuery.fn.stretchyPants = function(options) {
 
 	// set css attributes:
 	image.css('position','absolute')
-	data.options.container.css({
-		'overflow': 'hidden',
-		'position': 'relative'
-	})
+	data.options.container.css('overflow', 'hidden')
+
+	current_positioning = data.options.container.css('position').toLowerCase();
+	if(current_positioning !== 'relative' || current_positioning !== 'absolute')
+	{
+		data.options.container.css('position', 'relative')
+	}
 
 	function stretchImage(){
 		var container = data.options.container;
