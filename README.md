@@ -16,7 +16,23 @@ As you resize the window the image will stay within the bounds of the container,
 
 See demo.html for a examples.
 
-### Variations
+### Options
+
+These are the default options:
+		
+	{
+		container: image.parent(),
+		anchor: 'center-center'
+	}
+
+
+### Container
+
+If your variable width container is not the parent of the stretchy image you'll do this:
+
+	$('#hero-image').stretchyPants({ container: '.hero-wrap' })
+	
+### Anchor 
 
 By default the plugin will keep the center of the image centered in the container. You can choose to anchor the top or bottom, and left or right sides:
 
