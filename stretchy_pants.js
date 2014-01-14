@@ -78,56 +78,29 @@ jQuery.fn.stretchyPants = function(options) {
 			var stretched_width = data.hero_image_natural_width * (container.height() / data.hero_image_natural_height)
 			var center_offset = '-' + (stretched_width-container.width())/2.0 + 'px';
 			var css = { 'height': '100%', 'width': 'auto' };
-			getPositionValues(css, center_offset, 0);
+			getPositionValuesAlt(css, center_offset, 0);
 			return css;
 		} else { // image is more tall than container:
 			var stretched_height = data.hero_image_natural_height * (container.width() / data.hero_image_natural_width)
 			var center_offset = '-' + (stretched_height-container.height())/2.0 + 'px';
 			var css = { 'width': '100%', 'height': 'auto'};
-			getPositionValues(css, 0, center_offset);
+			getPositionValuesAlt(css, 0, center_offset);
 			return css;
 		}
 	}
 
-	function getPositionValues(css, center_offset_for_left, center_offset_for_top) {
-		switch(data.options.anchor){
-			case 'center-center':
-				css['top'] = center_offset_for_top;
-				css['left'] = '0px';
-				break;
-			case 'center-left':
-				css['top'] = center_offset_for_top;
-				css['left'] = '0px'
-				break;
-			case 'center-right':
-				css['top'] = center_offset_for_top;
-				css['right'] = '0px';
-				break;
-			case 'top-center':
-				css['top'] = '0px';
-				css['left'] = center_offset_for_left;
-				break;
-			case 'top-right':
-				css['top'] = '0px';
-				css['right'] = '0px';
-				break;
-			case 'top-left':
-				css['top'] = '0px';
-				css['left'] = '0px';
-				break;
-			case 'bottom-center':
-				css['bottom'] = '0px';
-				css['left'] = center_offset_for_left;
-				break;
-			case 'bottom-right':
-				css['bottom'] = '0px';
-				css['right'] = '0px';
-				break;
-			case 'bottom-left':
-				css['bottom'] = '0px';
-				css['left'] = '0px';
-				break;
-			alert('Unknown Anchor value:' + data.options.anchor);
+	function getPositionValuesAlt(css, center_offset_for_left, center_offset_for_top){
+		var vertical_alignment = data.options.anchor.split('-')[0];
+		var horizontal_alignment = data.options.anchor.split('-')[1];
+		if(vertical_alignment==='center'){
+			css['top'] = center_offset_for_top;
+		} else {
+			css[vertical_alignment] = '0px';
+		}
+		if(horizontal_alignment==='center'){
+			css['left'] = center_offset_for_left;
+		} else {
+			css[horizontal_alignment] = '0px';
 		}
 		return css;
 	}
