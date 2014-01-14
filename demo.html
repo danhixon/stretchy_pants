@@ -5,6 +5,9 @@
   <style>
     .hero-container { width: 100%; height: 500px; margin: 40px auto;  }
     h1 { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; text-align: center; font-weight: 200;}
+    div.columns { width: 100%; height: 300px; margin: 10px 0 0;}
+    div.col-1 { width: 29%; float: left; height: 300px; }
+    div.col-2 { width: 69%; float: right; height: 300px;  }
   </style>
 </head>
 <body>
@@ -12,11 +15,23 @@
 	<div class="hero-container">
 		<img src="big_image.jpg" alt="image remains centered" />
 	</div> 
-	<h1>Resize Window to See the Magic.</h1>
+  <h1>Resize Window to See the Magic.</h1>
+
+  <div class="columns">
+    <div class="col-1">
+      <img src="big_image.jpg" alt="image remains centered" />  
+    </div>
+    <div class="col-2">
+      <img src="big_image.jpg" alt="image remains centered" />  
+    </div>
+    
+  </div> 
+
+	
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script type="text/javascript" src="stretchy_pants.js"></script>
   <script>
-  	$('.hero-container img').stretchyPants();
+  	$('img').stretchyPants();
   </script>
 </body>
 
