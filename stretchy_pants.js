@@ -32,13 +32,14 @@ jQuery.fn.stretchyPants = function(options) {
 		});
 		return $(this);
 	}
+
+	// here we go:
 	var image = $(this)
 	var data = image.data();
 
 	var default_options = {
 		container: image.parent(),
-		horizontal_anchor: 'center',
-		vertical_anchor: 'center',
+		anchor: 'center-center'
 	}
 	data.options = $.extend(default_options, options);
 
@@ -47,26 +48,15 @@ jQuery.fn.stretchyPants = function(options) {
 	data.options.container.css('overflow', 'hidden')
 
 	current_positioning = data.options.container.css('position').toLowerCase();
-	if(current_positioning !== 'relative' || current_positioning !== 'absolute')
+	
+	if(current_positioning.search(/relative|absolute/i) === -1)
 	{
 		data.options.container.css('position', 'relative')
 	}
 
 	function stretchImage(){
-		var container = data.options.container;
-		var container_aspect_ratio = container.width() / container.height();
-
 		if(data.hero_image_aspect_ratio) {
-			if(data.hero_image_aspect_ratio > container_aspect_ratio) {
-			// image is more wide than container:
-			var stretched_width = data.hero_image_natural_width * (container.height() / data.hero_image_natural_height)
-			var offset = '-' + (stretched_width-container.width())/2.0 + 'px';
-			image.css({ 'height': '100%', 'width': 'auto', 'left': offset, 'top': '0px' });
-		} else { // image is more tall than container:
-			var stretched_height = data.hero_image_natural_height * (container.width() / data.hero_image_natural_width)
-			var offset = '-' + (stretched_height-container.height())/2.0 + 'px';
-			image.css({ 'width': '100%', 'height': 'auto', 'top': offset, 'left': '0px' });
-		}
+			image.css(getCSS());
 		} else {
 			$(image).calculateNaturalAspectRatio(function(image){
 				data.hero_image_natural_width = image.naturalWidth;
@@ -78,6 +68,69 @@ jQuery.fn.stretchyPants = function(options) {
 		}
 
 	}	
+
+	function getCSS(){
+		var container = data.options.container;
+		var container_aspect_ratio = container.width() / container.height();
+
+		if(data.hero_image_aspect_ratio > container_aspect_ratio) {
+			// image is more wide than container:
+			var stretched_width = data.hero_image_natural_width * (container.height() / data.hero_image_natural_height)
+			var center_offset = '-' + (stretched_width-container.width())/2.0 + 'px';
+			var css = { 'height': '100%', 'width': 'auto' };
+			getPositionValues(css, center_offset, 0);
+			return css;
+		} else { // image is more tall than container:
+			var stretched_height = data.hero_image_natural_height * (container.width() / data.hero_image_natural_width)
+			var center_offset = '-' + (stretched_height-container.height())/2.0 + 'px';
+			var css = { 'width': '100%', 'height': 'auto'};
+			getPositionValues(css, 0, center_offset);
+			return css;
+		}
+	}
+
+	function getPositionValues(css, center_offset_for_left, center_offset_for_top) {
+		switch(data.options.anchor){
+			case 'center-center':
+				css['top'] = center_offset_for_top;
+				css['left'] = '0px';
+				break;
+			case 'center-left':
+				css['top'] = center_offset_for_top;
+				css['left'] = '0px'
+				break;
+			case 'center-right':
+				css['top'] = center_offset_for_top;
+				css['right'] = '0px';
+				break;
+			case 'top-center':
+				css['top'] = '0px';
+				css['left'] = center_offset_for_left;
+				break;
+			case 'top-right':
+				css['top'] = '0px';
+				css['right'] = '0px';
+				break;
+			case 'top-left':
+				css['top'] = '0px';
+				css['left'] = '0px';
+				break;
+			case 'bottom-center':
+				css['bottom'] = '0px';
+				css['left'] = center_offset_for_left;
+				break;
+			case 'bottom-right':
+				css['bottom'] = '0px';
+				css['right'] = '0px';
+				break;
+			case 'bottom-left':
+				css['bottom'] = '0px';
+				css['left'] = '0px';
+				break;
+			alert('Unknown Anchor value:' + data.options.anchor);
+		}
+		return css;
+	}
 
 	$(window).resize(function(){
 		stretchImage()

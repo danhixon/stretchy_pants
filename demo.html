@@ -1,37 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Just for Fun.</title>
+  <title>It's for Fun.</title>
   <style>
-    .hero-container { width: 100%; height: 400px; margin: 40px auto;  }
-    h1 { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; text-align: center; font-weight: 200;}
-    div.columns { width: 100%; height: 300px; margin: 10px 0 0;}
-    div.col-1 { width: 29%; float: left; height: 300px; }
-    div.col-2 { width: 69%; float: right; height: 300px;  }
+    body { margin: 0; }
+    * { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    .hero-container { width: 100%; height: 400px; margin: 0;  position: absolute; top:0; left:0; overflow: hidden; }
+    .hero-container h1 { font-size: 35px;  text-align: center; font-weight: 200; background: #fafafa; position: absolute; bottom: 75px; z-index: 90; left: 100px; padding: 5px 25px; border-radius: 45px; }
+    h2 { font-size: 35px;  text-align: center; font-weight: 200; margin-top: 420px; }
+
+    div.columns { width: 100%; height: 300px; margin: 10px 0 0; clear:both; overflow: hidden; }
+    div.col-1 { width: 35%; float: left; height: 300px; }
+    div.col-2 { width: 65%; float: right; height: 300px;  }
+
+    div.grid { width: 40%; height: 400px; margin: 10px auto 0 auto; clear:both; }
+    div.grid .grid-item { float: left; width: 50%; height: 200px; }
+    div.caption { position: absolute; bottom: 4px; width: 100%; background: rgba(255,255,255,0.7); padding: 5px 0px; text-align: center; border-radius: 15px; text-shadow: 1px 1px 0px #fafafa;}
   </style>
 </head>
 <body>
-	<h1>Stretchy Pants</h1>
+	
 	<div class="hero-container">
+    <h1>Introducing: Stretchy Pants</h1>
 		<img src="big_image.jpg" alt="image remains centered" />
-	</div> 
-  <h1>Resize Window to See the Magic.</h1>
+	</div>
+
+  <h2>Resize Window to See the Magic.</h2>
 
   <div class="columns">
     <div class="col-1">
-      <img src="big_image.jpg" alt="image remains centered" />  
+      <img src="big_image.jpg" alt="it's for fun" />
+      <div class="caption">Anchor: center-right</div>
     </div>
     <div class="col-2">
-      <img src="big_image.jpg" alt="image remains centered" />  
+      <img src="big_image.jpg" alt="Chancho!" />  
+      <div class="caption">Anchor: center-left</div>
     </div>
     
-  </div> 
+  </div>
 
+ <div class="grid">
+    
+    <div class="grid-item">
+      <img class="bottom-right" src="big_image.jpg" alt="Anchored: Bottom-Right" />  
+      <div class="caption">Anchor: bottom-right</div>
+    </div>
+
+    <div class="grid-item">
+      <img class="bottom-left" src="big_image.jpg" alt="Anchored: Bottom-Left" />  
+      <div class="caption">Anchor: bottom-left</div>
+    </div>
+
+
+    <div class="grid-item">
+      <img class="top-right" src="big_image.jpg" alt="Anchored: Top-Right" />  
+      <div class="caption">Anchor: top-right</div>
+    </div>
+
+    <div class="grid-item">
+      <img class="top-left" src="big_image.jpg" alt="Anchored: Top-Left" />
+      <div class="caption">Anchor: top-left</div>
+    </div>
+
+    
+  </div> 
 	
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script type="text/javascript" src="stretchy_pants.js"></script>
   <script>
-  	$('img').stretchyPants();
+    // Default anchor is 'center-center'
+  	$('.hero-container img').stretchyPants();
+    $('.col-1 img').stretchyPants({ anchor: 'center-right' });
+    $('.col-2 img').stretchyPants({ anchor: 'center-left' });
+    $('.top-left').stretchyPants({ anchor: 'top-left' });
+    $('.top-right').stretchyPants({ anchor: 'top-right' });
+    $('.bottom-left').stretchyPants({ anchor: 'bottom-left' });
+    $('.bottom-right').stretchyPants({ anchor: 'bottom-right' });
+
   </script>
 </body>
 
