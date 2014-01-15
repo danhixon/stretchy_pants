@@ -33,6 +33,13 @@ jQuery.fn.stretchyPants = function(options) {
 		return $(this);
 	}
 
+	if($(this).size() === 0)
+	{
+		if(console && console.log){
+			console.log("Selector Not found: " + (this.selector || 'cannot discover selector with jQuery 1.9+'));
+		}
+		return $(this);
+	}
 	// here we go:
 	var image = $(this)
 	var data = image.data();
