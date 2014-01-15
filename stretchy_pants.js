@@ -132,9 +132,12 @@ jQuery.fn.stretchyPants = function(options) {
 	$(window).resize(function(){
 		stretchImage()
 	})
-	window.addEventListener('orientationchange', function(){
-		stretchImage();
-	});
+	if(window.addEventListener){
+		window.addEventListener('orientationchange', function(){
+			stretchImage();
+		});	
+	}
+	
 	stretchImage();
 	return $(this);
 }
