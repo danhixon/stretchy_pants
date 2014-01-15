@@ -5,9 +5,11 @@
   <style>
     body { margin: 0; }
     * { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
-    .hero-container { width: 100%; height: 400px; margin: 0;  position: absolute; top:0; left:0; overflow: hidden; }
+    .hero-container { width: 100%; height: 400px; margin: 0; position: absolute; top:0; left:0; overflow: hidden; }
     .hero-container h1 { font-size: 35px;  text-align: center; font-weight: 200; background: #fafafa; position: absolute; bottom: 75px; z-index: 90; left: 100px; padding: 5px 25px; border-radius: 45px; }
     h2 { font-size: 35px;  text-align: center; font-weight: 200; margin-top: 420px; }
+    /* this style is just to ensure these get overridden */
+    .heroic-image { top: 0; bottom: 0; left: 0; right: 0;}
 
     div.columns { width: 100%; height: 300px; margin: 10px 0 0; clear:both; overflow: hidden; }
     div.col-1 { width: 35%; float: left; height: 300px; }
@@ -22,7 +24,7 @@
 	
 	<div class="hero-container">
     <h1>Introducing: Stretchy Pants</h1>
-		<img src="big_image.jpg" alt="image remains centered" />
+		<img src="big_image.jpg" alt="image remains centered" class="heroic-image" />
 	</div>
 
   <h2>Resize Window to See the Magic.</h2>

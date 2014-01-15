@@ -96,13 +96,30 @@ jQuery.fn.stretchyPants = function(options) {
 			css['top'] = center_offset_for_top;
 		} else {
 			css[vertical_alignment] = '0px';
+			css[otherAlignment(vertical_alignment)] = 'auto';
 		}
 		if(horizontal_alignment==='center'){
 			css['left'] = center_offset_for_left;
 		} else {
 			css[horizontal_alignment] = '0px';
+			css[otherAlignment(horizontal_alignment)] = 'auto';
 		}
 		return css;
+	}
+
+	function otherAlignment(alignment){
+		if(alignment==='top'){
+			return 'bottom';
+		}
+		if(alignment==='bottom'){
+			return 'top';
+		}
+		if(alignment==='left'){
+			return 'right';
+		}
+		if(alignment==='right'){
+			return 'left';
+		}
 	}
 
 	$(window).resize(function(){
