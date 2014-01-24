@@ -17,7 +17,13 @@ jQuery.fn.calculateNaturalAspectRatio = function(callBack) {
 		}
 	}
 };
-		
+	
+/* allow IE to peacefully ignore console statements  */	
+if (!window.console) console = {};
+console.log = console.log || function(){};
+console.warn = console.warn || function(){};
+console.error = console.error || function(){};
+console.info = console.info || function(){};
 
 /*
 		Fills hero container with the hero image centered in the container.
@@ -35,9 +41,7 @@ jQuery.fn.stretchyPants = function(options) {
 
 	if($(this).size() === 0)
 	{
-		if(console && console.log){
-			console.log("Selector Not found: " + (this.selector || 'cannot discover selector with jQuery 1.9+'));
-		}
+		console.error("Selector Not found: " + (this.selector || 'cannot discover selector with jQuery ' + $.fn.jquery));	
 		return $(this);
 	}
 	// here we go:
