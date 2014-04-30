@@ -46,6 +46,11 @@ jQuery.fn.stretchyPants = function(options) {
 	}
 	// here we go:
 	var image = $(this)
+	if(!$(this).is('img'))
+	{
+		console.error("You must select an image. This is not an image: " + (this.selector || '[cannot discover selector with jQuery]' + $.fn.jquery));	
+		return $(this);
+	}
 	var data = image.data();
 
 	var default_options = {
