@@ -55,7 +55,8 @@ jQuery.fn.stretchyPants = function(options) {
 
 	var default_options = {
 		container: image.parent(),
-		anchor: 'center-center'
+		anchor: 'center-center',
+		fitVerticals: false
 	}
 	data.options = $.extend(default_options, options);
 
@@ -88,6 +89,18 @@ jQuery.fn.stretchyPants = function(options) {
 	function getCSS(){
 		var container = data.options.container;
 		var container_aspect_ratio = container.width() / container.height();
+
+		if(data.options.fitVerticals === true && data.hero_image_aspect_ratio < 1){
+			return {
+				'margin': '0 auto',
+				'display': 'block',
+				'float': 'none',
+				'left': 'auto',
+				'position': 'relative', 
+				'height': '100%',
+				'width': 'auto'
+			}
+		}
 
 		if(data.hero_image_aspect_ratio > container_aspect_ratio) {
 			// image is more wide than container:
