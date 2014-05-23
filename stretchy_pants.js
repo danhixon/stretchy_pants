@@ -89,11 +89,10 @@ jQuery.fn.stretchyPants = function(options) {
 	function getCSS(){
 		var container = data.options.container;
 		var container_aspect_ratio = container.width() / container.height();
-
+		console.log(data.options.fitVerticals)
 		if(data.options.fitVerticals === true && data.hero_image_aspect_ratio < 1){
 			return {
 				'margin': '0 auto',
-				'display': 'block',
 				'float': 'none',
 				'left': 'auto',
 				'position': 'relative', 

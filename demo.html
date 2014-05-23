@@ -6,6 +6,8 @@
     body { margin: 0; }
     * { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
     .hero-container { width: 100%; height: 400px; margin: 0; position: absolute; top:0; left:0; overflow: hidden; }
+    .bottom-hero { position: relative; height: 600px; background: #ccc; }
+    .bottom-hero img { display:block; }
     .hero-container h1 { font-size: 35px;  text-align: center; font-weight: 200; background: #fafafa; position: absolute; bottom: 75px; z-index: 90; left: 100px; padding: 5px 25px; border-radius: 45px; }
     h2 { font-size: 35px;  text-align: center; font-weight: 200; margin-top: 420px; }
     /* this style is just to ensure these get overridden */
@@ -41,7 +43,7 @@
     
   </div>
 
- <div class="grid">
+   <div class="grid">
     
     <div class="grid-item">
       <img class="bottom-right" src="big_image.jpg" alt="Anchored: Bottom-Right" />  
@@ -66,12 +68,19 @@
 
     
   </div> 
-	
+
+	 
+  <div class="hero-container bottom-hero">
+    <h1>(unless you want to)</h1>
+    <img src="vertical.jpg" alt="image remains centered" class="vertical-image" />
+  </div>
+
+
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script type="text/javascript" src="stretchy_pants.js"></script>
   <script>
     // Default anchor is 'center-center'
-  	$('.hero-container img').stretchyPants();
+  	$('.hero-container img').stretchyPants({ fitVerticals: true });
     $('.col-1 img').stretchyPants({ anchor: 'center-right' });
     $('.col-2 img').stretchyPants({ anchor: 'center-left' });
     $('.top-left').stretchyPants({ anchor: 'top-left' });
@@ -79,6 +88,7 @@
     $('.bottom-left').stretchyPants({ anchor: 'bottom-left' });
     $('.bottom-right').stretchyPants({ anchor: 'bottom-right' });
     $('.bogus-selector').stretchyPants({ anchor: 'bottom-left' })
+
   </script>
 </body>
 

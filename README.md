@@ -22,7 +22,8 @@ These are the default options:
 		
 	{
 		container: image.parent(),
-		anchor: 'center-center'
+		anchor: 'center-center',
+		fitVerticals: false
 	}
 
 
@@ -48,3 +49,6 @@ These are the valid anchor values:
 	top-center, top-right, top-left, 
 	bottom-center, bottom-right, bottom-left
 	
+### fitVerticals
+
+If you have tall images that you'd rather not stretch you may set this to true.
