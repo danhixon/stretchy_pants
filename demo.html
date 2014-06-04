@@ -85,9 +85,22 @@
     $('.col-2 img').stretchyPants({ anchor: 'center-left' });
     $('.top-left').stretchyPants({ anchor: 'top-left' });
     $('.top-right').stretchyPants({ anchor: 'top-right' });
-    $('.bottom-left').stretchyPants({ anchor: 'bottom-left' });
+    // sometimes the sizes of other things are being resized with the window and we want 
+    // to control when stretchyPants will do it's thing - we can pass autoStretch: false
+    // and call the stretchImage() function that we've attached to the data object
+    $('.bottom-left').stretchyPants({ anchor: 'bottom-left', autoStretch: false  });
     $('.bottom-right').stretchyPants({ anchor: 'bottom-right' });
-    $('.bogus-selector').stretchyPants({ anchor: 'bottom-left' })
+    $('.bogus-selector').stretchyPants({ anchor: 'bottom-left'})
+
+    $('.bottom-left').data.stretchImage()
+    $(window).resize(function(){
+      $('.bottom-left').data.stretchImage()
+    })
+    if(window.addEventListener){
+      window.addEventListener('orientationchange', function(){
+        $('.bottom-left').data.stretchImage();
+      }); 
+    }
 
   </script>
 </body>

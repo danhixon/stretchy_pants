@@ -23,7 +23,8 @@ These are the default options:
 	{
 		container: image.parent(),
 		anchor: 'center-center',
-		fitVerticals: false
+		fitVerticals: false,
+		autoStretch: true
 	}
 
 
@@ -52,3 +53,23 @@ These are the valid anchor values:
 ### fitVerticals
 
 If you have tall images that you'd rather not stretch you may set this to true.
+
+### autoStretch
+
+Sometimes the sizes of other things are being resized with the window and you want to control when stretchyPants will do it's thing - you can pass autoStretch: false and call the stretchImage() function that we've attached to the data object.
+
+    $('#main-hero').stretchyPants({ anchor: 'bottom-left', autoStretch: false  });
+
+    $('#main-hero').data.stretchImage()
+    $(window).resize(function(){
+    	// resize some other stuff...
+    	/// now we are ready to stretch our image:
+      $('#main-hero').data.stretchImage()
+    })
+    if(window.addEventListener){
+      window.addEventListener('orientationchange', function(){
+      	// resize some other stuff...
+    		/// now we are ready to stretch our image:
+        $('#main-hero').data.stretchImage();
+      }); 
+    }
