@@ -55,7 +55,7 @@ jQuery.fn.stretchyPants = function(options) {
 
 	var default_options = {
 		container: image.parent(),
-		anchor: 'center-center',
+		anchor: $(this).data('stretchy-anchor') || 'center-center',
 		fitVerticals: false,
 		autoStretch: true
 	}
